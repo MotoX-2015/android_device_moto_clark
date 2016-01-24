@@ -111,3 +111,17 @@ TW_NEW_ION_HEAP := true
 TW_INCLUDE_CRYPTO := true
 TW_SCREEN_BLANK_ON_BOOT := true
 TARGET_RECOVERY_QCOM_RTC_FIX := true
+
+#MultiROM
+MR_INPUT_TYPE := type_b
+MR_INIT_DEVICES := device/moto/clark/multirom/mr_init_devices.c
+#MR_RD_ADDR := 0x01100000
+MR_DPI := xxhdpi
+MR_DPI_FONT := 435
+MR_FSTAB := device/moto/clark/twrp.fstab
+MR_USE_MROM_FSTAB := false
+#MR_KEXEC_MEM_MIN :=
+#MR_DEVICE_HOOKS := device/moto/clark/multirom/mr_hooks.c
+#MR_DEVICE_HOOKS_VER :=
+MR_KEXEC_MEM_MIN := 0x20000000# Unknown
+MR_KEXEC_DTB := true
