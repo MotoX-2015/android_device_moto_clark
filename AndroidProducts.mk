@@ -16,4 +16,4 @@
 
 PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/aosp_clark.mk \
-    $(LOCAL_DIR)/cm_clark.mk
+    $(LOCAL_DIR)/omni_clark.mk
