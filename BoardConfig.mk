@@ -113,6 +113,7 @@ TW_SCREEN_BLANK_ON_BOOT := true
 TARGET_RECOVERY_QCOM_RTC_FIX := true
 
 #MultiROM
+TARGET_RECOVERY_IS_MULTIROM := true
 MR_INPUT_TYPE := type_b
 MR_INIT_DEVICES := device/moto/clark/multirom/mr_init_devices.c
 #MR_RD_ADDR := 0x01100000
