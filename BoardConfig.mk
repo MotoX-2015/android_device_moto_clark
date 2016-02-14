@@ -124,5 +124,4 @@ MR_USE_MROM_FSTAB := false
 MR_DEVICE_HOOKS := device/moto/clark/multirom/mr_hooks.c
 MR_DEVICE_HOOKS_VER := 5
 MR_KEXEC_MEM_MIN := 0x0
-MR_DISABLE_ALPHA := true
-MR_PIXEL_FORMAT := "RGBA_8888"
+MR_PIXEL_FORMAT := "ABGR_8888"

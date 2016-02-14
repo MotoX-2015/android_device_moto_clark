@@ -17,6 +17,15 @@ const char *mr_init_devices[] =
     "/sys/devices/soc.0/f9824900.sdhci/mmc_host/mmc0/mmc0:0001/block/mmcblk0",
     "/sys/devices/soc.0/f9824900.sdhci/mmc_host/mmc0/mmc0:0001/block/mmcblk0*",
 
+    // sdcard
+    "/sys/devices/soc.0/f98a4900.sdhci/mmc_host/mmc1",
+    "/sys/devices/soc.0/f98a4900.sdhci/mmc_host/mmc1/mmc1:aaaa",
+    "/sys/devices/soc.0/f98a4900.sdhci/mmc_host/mmc1/mmc1:aaaa/block/mmcblk1",
+    "/sys/devices/soc.0/f98a4900.sdhci/mmc_host/mmc1/mmc1:aaaa/block/mmcblk1*",
+    "/sys/block/mmcblk1",
+
+    "/sys/devices/soc.0/f9200000.ssusb/f9200000.dwc3/xhci-hcd.0.auto*",
+
     "/sys/bus/mmc",
     "/sys/bus/mmc/drivers/mmcblk",
     "/sys/bus/sdio/drivers/bcmsdh_sdmmc",
