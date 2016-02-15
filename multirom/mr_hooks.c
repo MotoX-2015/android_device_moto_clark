@@ -21,9 +21,6 @@
 #include <util.h>
 #include <multirom.h>
 
-#define GATEKEEPER_PATH "/system/lib64/hw/gatekeeper.angler.so"
-#define GATEKEEPER_FAKE_SOURCE "/system/build.prop"
-
 #if MR_DEVICE_HOOKS >= 1
 
 int mrom_hook_after_android_mounts(const char *busybox_path, const char *base_path, int type)
