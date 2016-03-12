@@ -68,3 +68,51 @@ int mrom_hook_has_kexec(void)
     return 1;
 }
 #endif
+
+#if MR_DEVICE_HOOKS >= 6
+static int fork_and_exec(char **cmd, char** env)
+{
+    pid_t pID = fork();
+    if(pID == 0)
+    {
+        stdio_to_null();
+        setpgid(0, getpid());
+        execve(cmd[0], cmd, env);
+        ERROR("Failed to exec %s: %s\n", cmd[0], strerror(errno));
+        _exit(127);
+    }
+    return pID;
+}
+
+static int qseecomd_pid = -1;
+
+void tramp_hook_encryption_setup(void)
+{
+    // start qseecomd
+    char* cmd[] = {"/mrom_enc/qseecomd", NULL};
+    char* env[] = {"LD_LIBRARY_PATH=/mrom_enc", NULL};
+    chmod("/dev/qseecom", 0666);
+    chown("/dev/qseecom", AID_SYSTEM, AID_DRMRPC);
+    chown("/dev/ion", AID_SYSTEM, AID_SYSTEM);
+    chmod("/mrom_enc/qseecomd", 0755);
+    qseecomd_pid = fork_and_exec(cmd, env);
+    if (qseecomd_pid == -1)
+        ERROR("Failed to fork for qseecomd; should never happen!\n");
+    else
+        INFO("qseecomd started: pid=%d\n", qseecomd_pid);
+}
+void tramp_hook_encryption_cleanup(void)
+{
+    struct stat info;
+    if (qseecomd_pid != -1)
+    {
+        kill(-qseecomd_pid, SIGTERM); // kill the entire process group
+        waitpid(qseecomd_pid, NULL, 0);
+    }
+    INFO("cleaned up after qseecomd\n");
+}
+
+void mrom_hook_fixup_full_cmdline(char *bootimg_cmdline, size_t bootimg_cmdline_cap)
+{
+}
+#endif

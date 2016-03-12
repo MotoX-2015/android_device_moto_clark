@@ -42,5 +42,13 @@ const char *mr_init_devices[] =
     "/sys/devices/virtual/tty/ptmx",
     "/sys/bus/usb",
 
+    // Encryption
+    "/sys/devices/virtual/misc/device-mapper",
+    "/sys/devices/virtual/misc/ion",
+    "/sys/devices/virtual/qseecom/qseecom",
+
+    // exfat requires fuse device
+    "/sys/devices/virtual/misc/fuse",
+
     NULL
 };
