@@ -24,7 +24,10 @@ const char *mr_init_devices[] =
     "/sys/devices/soc.0/f98a4900.sdhci/mmc_host/mmc1/mmc1:aaaa/block/mmcblk1*",
     "/sys/block/mmcblk1",
 
+    // OTG
+    "/sys/devices/soc.0/f9200000.ssusb/f9200000.dwc3/xhci-hcd*",
     "/sys/devices/soc.0/f9200000.ssusb/f9200000.dwc3/xhci-hcd.0.auto*",
+    "/sys/devices/platform/xhci-hcd*",
 
     "/sys/bus/mmc",
     "/sys/bus/mmc/drivers/mmcblk",
