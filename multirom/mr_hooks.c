@@ -14,6 +14,7 @@
 #include <errno.h>
 #include <signal.h>
 #include <sys/wait.h>
+#include <sys/mount.h>
 
 #include <private/android_filesystem_config.h>
 
@@ -93,7 +94,10 @@ void tramp_hook_encryption_setup(void)
     char* env[] = {"LD_LIBRARY_PATH=/mrom_enc", NULL};
     chmod("/dev/qseecom", 0666);
     chown("/dev/qseecom", AID_SYSTEM, AID_DRMRPC);
+    chmod("/dev/ion", 0664);
     chown("/dev/ion", AID_SYSTEM, AID_SYSTEM);
+    chown("/firmware", AID_SYSTEM, AID_SYSTEM);
+    mount("/dev/block/bootdevice/by-name/modem", "/firmware", "ext4", MS_NODEV | MS_RDONLY | MS_NOSUID, "");
     chmod("/mrom_enc/qseecomd", 0755);
     qseecomd_pid = fork_and_exec(cmd, env);
     if (qseecomd_pid == -1)

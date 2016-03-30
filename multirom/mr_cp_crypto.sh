@@ -20,4 +20,4 @@
 #for f in $QCOM_KEYMASTER_FILES; do
 #    cp -a "${QCOM_PATH}/${f}" "$2/vendor/firmware/keymaster/"
 #done
-cp -ra "$1/device/moto/clark/multirom_enc_blobs/"* "$2/"
+cp -Pra "$1/device/moto/clark/multirom_enc_blobs/"* "$2/"
