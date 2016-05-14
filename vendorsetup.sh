@@ -15,4 +15,4 @@
 #
 
 add_lunch_combo aosp_clark-userdebug
-add_lunch_combo omni_clark-userdebug
+add_lunch_combo cm_clark-userdebug

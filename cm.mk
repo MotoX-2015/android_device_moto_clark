@@ -2,8 +2,11 @@
 TARGET_SCREEN_HEIGHT := 1440
 TARGET_SCREEN_WIDTH := 2560
 
-# Inherit some common Omni stuff.
-$(call inherit-product, vendor/omni/config/common.mk)
+# Inherit some common CM stuff.
+$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+
+# Enhanced NFC
+$(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
 
 # Inherit device configuration
 $(call inherit-product, device/moto/clark/aosp_clark.mk)
@@ -11,7 +14,7 @@ $(call inherit-product, device/moto/clark/aosp_clark.mk)
 DEVICE_PACKAGE_OVERLAYS += device/moto/clark/overlay
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_NAME := omni_clark
+PRODUCT_NAME := cm_clark
 PRODUCT_BRAND := Android
 PRODUCT_MODEL := XT1575
 
