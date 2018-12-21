@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-DEVICE_PATH := device/motorola/clark
+DEVICE_PATH := device/moto/clark
 
 # Arch
 BOARD_VENDOR := motorola-qcom
@@ -176,7 +176,7 @@ TARGET_LD_SHIM_LIBS := \
 
 # TWRP Support - Optional
 ifeq ($(WITH_TWRP),true)
--include device/motorola/clark/twrp.mk
+-include device/moto/clark/twrp.mk
 endif
 
 # Vendor Init
