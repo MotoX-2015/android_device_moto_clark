@@ -49,14 +49,6 @@ AUDIO_FEATURE_ENABLED_SPKR_PROTECTION := true
 AUDIO_USE_LL_AS_PRIMARY_OUTPUT := true
 USE_CUSTOM_AUDIO_POLICY := 1
 
-# Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
-BOARD_BLUETOOTH_BDROID_HCILP_INCLUDED := false
-BOARD_HAS_QCA_BT_ROME := true
-BOARD_HAVE_BLUETOOTH := true
-BOARD_HAVE_BLUETOOTH_QCOM := true
-QCOM_BT_USE_BTNV := true
-
 # Camera
 TARGET_CAMERASERVICE_CLOSES_NATIVE_HANDLES := true
 TARGET_USES_MEDIA_EXTENSIONS := true
@@ -87,11 +79,6 @@ TARGET_FS_CONFIG_GEN += \
 
 # Fonts
 EXTENDED_FONT_FOOTPRINT := true
-
-# GPS
-USE_DEVICE_SPECIFIC_GPS := true
-USE_DEVICE_SPECIFIC_LOC_API := true
-TARGET_NO_RPC := true
 
 # Graphics
 HAVE_ADRENO_SOURCE:= false
@@ -143,54 +130,15 @@ TARGET_USES_INTERACTION_BOOST := true
 # Protobuf-c is supported in this build
 PROTOBUF_SUPPORTED := true
 
-# Recovery
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/fstab.qcom
-
-# Releasetools
-TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)/releasetools
-
 # Ril
 TARGET_RIL_VARIANT := caf
-
-# SDClang
-TARGET_USE_SDCLANG := true
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
 include device/qcom/sepolicy/legacy-sepolicy.mk
-
-#BOARD_SEPOLICY_DIRS += \
-#    $(DEVICE_PATH)/sepolicy
-
-# Shims
-TARGET_LD_SHIM_LIBS := \
-    /system/vendor/lib64/lib-imsvt.so|libshims_ims.so \
-    /system/lib64/libandroid.so|libshim_ril.so \
-    /system/lib/libjustshoot.so|libshims_camera.so \
-    /system/vendor/lib64/libril-qc-qmi-1.so|rild_socket.so \
-    /system/vendor/lib64/libizat_core.so|libshims_get_process_name.so \
-    /system/lib/libmdmcutback.so|libqsap_shim.so \
-    /system/lib64/libmdmcutback.so|libqsap_shim.so
 
 # TWRP Support - Optional
 ifeq ($(WITH_TWRP),true)
 -include device/moto/clark/twrp.mk
 endif
 
-# Vendor Init
-TARGET_INIT_VENDOR_LIB := libinit_clark
-TARGET_RECOVERY_DEVICE_MODULES := libinit_clark
-
-# Wifi
-BOARD_HAS_QCOM_WLAN              := true
-BOARD_HAS_QCOM_WLAN_SDK          := true
-BOARD_HOSTAPD_DRIVER             := NL80211
-BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_qcwcn
-BOARD_WLAN_DEVICE                := qcwcn
-BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_qcwcn
-TARGET_USES_QCOM_WCNSS_QMI       := true
-TARGET_USES_WCNSS_MAC_ADDR_REV   := true
-WIFI_DRIVER_FW_PATH_STA          := "sta"
-WIFI_DRIVER_FW_PATH_AP           := "ap"
-WPA_SUPPLICANT_VERSION           := VER_0_8_X
